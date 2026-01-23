@@ -17,7 +17,7 @@ I will be walking through the pwnable.kr CTF called "fd" which can be found [her
 - [What We Know](#what-we-know)
 - [The Vulnerability And Why It Works](#the-vulnerability-and-why-it-works)
 
-[Secure The Code](#secure-the-code)
+[Secure This](#secure-this)
 
 # Before We Get The Flag
 
