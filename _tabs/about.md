@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
 
 I am a VES (Visual Effects Society) nominated software developer with 6+ years of experience working across multiple shows and box office movies pursuing my passion and interest for hacking and secure coding. I like to know how things work, how to break them, and then how to prevent them from being broken. I enjoy Binary Exploitation (I'm a psychopath) and Reverse Engineering, but you'll also find some web pentesting and other hacking write-ups here.
