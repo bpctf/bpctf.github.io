@@ -65,7 +65,7 @@ First, lets run gdb and see if our breakdown of the check_password function is c
 
 There is a lot of scary stuff here, but we're looking for the `res += ip[i]` portion, which I believe is at the instruction `add DWORD PTR [ebp-0x8],eax`. So what's going on here?
 
-> **Tip**: This is assembly and is good knowledge to have then doing binary exploitation and reverse engineering.
+> **Tip**: This is assembly and is good knowledge to have when doing binary exploitation and reverse engineering.
 
 - `add`: This is just calling the add instruction.
 - `DWORD PTR`: This stands for Double Word which is just how assembly specifies the size of the operation which is 4 bytes.
