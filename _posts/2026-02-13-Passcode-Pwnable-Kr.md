@@ -130,3 +130,4 @@ Here is a python script that will do all the work for you. I've commented it so 
 # Secure This
 Again, I know the purpose of this challenge is to teach us about the frame stack and how improper function use can be manipulated by an attacker. Always resort to the api when using functions and always listen to compiler warnings. If the code creator would've used `scanf("%d", &passcode1)` instead of `scanf("%d", passcode1)` this could've been avoided. This happens every day in regular software development so it's always better to reference the api of the language you're using to make sure you're using functions properly and as expected.
 ![pc safe](/assets/img/posts/pcsafe.png)
+
