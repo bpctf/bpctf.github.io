@@ -23,7 +23,7 @@ I will be walking through the pwnable.kr CTF called "input2" which can be found 
 # Before We Get The Flag
 
 ## Args
-If you've followed any of my other write-ups we've mentioned `argc` and `argv` a few times. I've even explained it briefly in the [File Descriptor](http://bpctf.github.io/posts/File-Descriptor-Pwnable-Kr/) write-up. When writing a program that will require arguments from the user it's important you know that in languages like Python and C/C++ the first argument is reserved for the running of the executable. For example, if I have a C executable called `input2` and I need to pass it an argument, lets say `123`, the code in the executable would check if the user has passed less than 2 arguments, and if they have they will display a message or just exit. Here is an example of the code:
+If you've followed any of my other write-ups we've mentioned `argc` and `argv` a few times. I've even explained it briefly in the [File Descriptor](https://bpctf.github.io/posts/File-Descriptor-Pwnable-Kr/) write-up. When writing a program that will require arguments from the user it's important you know that in languages like Python and C/C++ the first argument is reserved for the running of the executable. For example, if I have a C executable called `input2` and I need to pass it an argument, lets say `123`, the code in the executable would check if the user has passed less than 2 arguments, and if they have they will display a message or just exit. Here is an example of the code:
 
 ![input2 arg example](/assets/img/posts/input2argexample.png)
 
