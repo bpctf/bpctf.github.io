@@ -10,7 +10,7 @@ I will be walking through the pwnable.kr CTF called "leg" which can be found [he
 [Before We Get The Flag](#before-we-get-the-flag)
 - [What Is ARM Architecture](#what-is-arm-architecture)
 
-[leg Vulnerability](#leg-vulnerability)
+[leg Code](#leg-code)
 - [Understanding The Code](#understanding-the-code)
 - [What We Know](#what-we-know)
 
@@ -21,7 +21,7 @@ I will be walking through the pwnable.kr CTF called "leg" which can be found [he
 ## What Is ARM Architecture
 ARM architecture in regards to assembly differentiates from Intel due to the fact that ARM focuses on using general-purpose registers to store and load memory access and focuses on efficient simple fixed instructions. Whereas Intel focuses on complex instructions that can directly manipulate memory and focuses on raw performance. This is a simple and quick explanation and you'll see the difference in the assembly instructions when we analyze the assembly code, but you can read more about it [here!](https://www.redhat.com/en/topics/linux/ARM-vs-x86). 
 
-# leg Vulnerability
+# leg Code
 
 ## Understanding The Code
 Now that you're somewhat familiar with ARM architecture and how it differs from Intel we can move onto working on this CTF. Following the instructions on the site we are going to the links shown for the `leg.c` file and the `leg.asm` file. We will be focusing on the C code and jump to the assembly code when we need to.
@@ -64,5 +64,3 @@ The third number we need is to is find the address of `key3()` because of the ca
 With all 3 numbers we can add them to see what value we get and then we can go ahead and pass that to the `./leg` file after we ssh and get the flag! `36068 + 36112 + 36220 = 108400`. So if we pass this value when prompted by the executable we should get our flag. Following the instructions on the site we are going to ssh into the machine with the following command: `ssh leg@pwnable.kr -p2222` and once prompted provide the password provided by the CTF. Once we're logged in we can run `./leg` and when prompted provide the program with `108400` and we should get our flag!
 
 ![leg sol](/assets/img/posts/legsolution.png)
-
-
