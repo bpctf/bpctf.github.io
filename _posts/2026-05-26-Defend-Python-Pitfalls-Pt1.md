@@ -11,6 +11,7 @@ Recently I watched a presentation by [Alex Brumen aka Brumens](https://brum3ns.g
 ## os.path.join
 In VFX software development we used `os.path.join` often and I noticed in testing that supplying an absolute path would ignore previous paths used in the function. As Brumen showcases in his article looking at the documentation for `os.path.join` it states that exact issue: 
 > If a segment is an absolute path (which on Windows requires both a drive and a root), then all previous segments are ignored and joining continues from the absolute path segment.
+{: .prompt-danger }
 
 Here is an example of a piece of vulnerable code that uses `os.path.join`.
 
