@@ -23,7 +23,7 @@ So how do we protect against this vulnerability? An effective way is to sanitize
 ![class p sec](/assets/img/posts/classpsec.png)
 ![class p sec](/assets/img/posts/classpsecex.png)
 
-# urllib.parse.urljoin
+## urllib.parse.urljoin
 `urllib.parse.urljoin` suffers from the same security problem as `os.path.join`. When passing two URLs to `urllib.parse.urljoin` if the second URL passed is a full URL then all previous segments are ignored. This is the warning present on the `urllib.parse.urljoin` [documentation.](https://docs.python.org/3/library/urllib.parse.html)
 
 >Warning

@@ -34,7 +34,7 @@ This method does have 1 pitfall with folders that are symlinks. If the directory
 
 ![sec ex](/assets/img/posts/pythonjoinsecex.png)
 
-# pathlib.joinpath
+## pathlib.joinpath
 The `pathlib.joinpath` function is similar to `os.path.join` where calling it will append each provided argument in sequence. Here is a piece of vulnerable code, keeping it in line with what we used for `os.path.join`:
 
 ![pathlib vuln](/assets/img/posts/pythonpathlibvuln.png)

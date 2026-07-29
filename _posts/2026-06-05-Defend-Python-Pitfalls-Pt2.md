@@ -32,7 +32,7 @@ A second way to secure the code is to inherit the `pickle.Unpickler` class and o
 
 As stated earlier and in the [pickle](https://docs.python.org/3/library/pickle.html) documentation the best approach is to use JSON for the use of any untrusted data and to forego using `pickle.loads`. Using functions like `json.dumps()` and `json.loads()` after filling in a json file with the user provided data.
 
-# yaml.load
+## yaml.load
 Similar to `pickle.loads` `yaml.load` is also unsafe to use and should not be trusted with any untrusted data. On the [pyyaml](https://pyyaml.org/wiki/PyYAMLDocumentation) documentation it states:
 >Warning: It is not safe to call yaml.load with any data received from an untrusted source! yaml.load is as powerful as pickle.load and so may call any Python function. Check the yaml.safe_load function though.
 {: .prompt-danger}
