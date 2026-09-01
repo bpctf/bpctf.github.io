@@ -42,13 +42,21 @@ Our code is using Python's f-string to format our query which means it is suscep
 
 ![sqli vuln test](/assets/img/posts/sqlivulntest.png)
 
+Here is what the SQL injection is doing:
+
+- `'`: This is closing the query string we want to override.
+- `UNION`: This is concatenating what came previously (nothing) to what is coming next.
+- `SELECT`: Used to select data from a database, in this case select what comes next.
+- `1, 'bob', 3, 'mypassword'`: We know how many entries there are in our database and the order so we're able to just recreate that. This is the data we're creating in memory to be passed to the variable in our function.
+- `--`: This represents the start of a single line comment. This means anything after -- will be commented. Since we're the bad actor in this case we don't know if there is more to the query so we just comment anything else out just in case.
+
 So what we're doing here is telling SQL to generate a fake new row of data on the fly. This means when we call `cursor.execute(query)` it tells the database engine to create this row in memory and give us all the data back when we call `cursor.fetchone()`. The database remains unchanged and this synthetic information that was stored in memory is used in place of an entry from the database which allows us to login and impersonate an admin all because we did not sanitize or validate input into our database query.
 
 To fix this issue we need to modify and secure our `query` to prevent bad actors from using SQL commands in the login field. To do this we need to use what is called a parameterized query. Here is our old query and our new query, inside our login endpoint, alongside each other so you can see the difference.
 
 ![sqli secure code](/assets/img/posts/securesqlicode.png)
 
-So we can remove out old unsanitized query and replace it with our parameterized query to prevent SQL injection. Here is what our login endpoint looks like now.
+So we can remove our old unsanitized query and replace it with our parameterized query to prevent SQL injection. Here is what our login endpoint looks like now.
 
 ![sqli secure code 2](/assets/img/posts/securesqlilogincode.png)
 
@@ -59,12 +67,16 @@ Insecure design is a flaw in the applications design that allows for bad actors 
 - Allowing a bad actor to brute-force login credentials by designing a login page without rate limiting.
 - Designing simple recovery questions which can be easily phished or researched by bad actors.
 
-One way to prevent this is by Threat Modeling. This means mapping out potential attack paths and security requirements before any code gets written. The second is to use secure design patterns this means using pre-built, test, and secure frameworks for authentication and authorization such as FastAPI's OAuth2 we used in part 1 of this article. Lastly, be up-to-date on recent attacks and how they were carried out so you don't fall victim to attacks other applications have fallen victim to.
+One way to prevent this is by Threat Modeling. This means mapping out potential attack paths and security requirements before any code gets written. The second is to use secure design patterns this means using pre-built, tested, and secure frameworks for authentication and authorization such as FastAPI's OAuth2 we used in part 1 of this article. Lastly, be up-to-date on recent attacks and how they were carried out so you don't fall victim to attacks other applications have fallen victim to.
 
 Can you spot the insecure design in our code? In our login endpoint we don't have a rate-limiter coupled with the information disclosure of "wrong username" and "wrong password" errors will alert any bad actors that they could potentially brute-force login credentials to our application. With FastAPI we can implement a rate limiter fairly easily and add a more generic error message as to not give bad actors any hints. This is how we go about adding a rate limiter to our login endpoint.
 
 ![rate limiter 1](/assets/img/posts/ratelimiter1.png)
 
 ![rate limiter 2](/assets/img/posts/ratelimiter2.png)
+
+Here is our rate limiter in action.
+
+![rate limiter example](/assets/img/posts/ratelimitexample.png)
 
 This concludes the second part of the article on securing OWASP Top10:2025 security vulnerabilities. You can find the vulnerable and secure code versions on my github [here](https://github.com/bpctf/OWASP-top10-secure-coding). 
